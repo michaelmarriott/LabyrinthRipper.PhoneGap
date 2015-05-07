@@ -1,0 +1,66 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Labyrinth Ripper</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+    <script src="scripts/frameworks/angular.min.js"></script>
+</head>
+<body ng-app="mPlatform">
+    <section id="todoapp" ng-controller="ProductCtrl">
+        <header id="header">
+            <div id="headerBand"></div>
+            <input id="new-todo" placeholder="What you looking for?" ng-text-change="search()" ng-model="productsModel" autofocus>
+        </header>
+        <section id="main">
+            <div id="todo-list" ng-cloak>
+                <div class="templateWrapper" ng-repeat="item in products">
+                    <div class="templateContainer">
+                        <div class="templateAddress" ng-cloak  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">{{item.Name }}</div>
+                     
+						<div ng-switch on="item.StoreId"  class="templateAddress">
+						{{item.Price  | currency:"R"}}
+							<span ng-switch-when="1"  class="templateAddress">
+							   Woolworths
+							</span>
+							<span ng-switch-when="2"  class="templateAddress">
+								PicknPay
+							</span>
+						</div>
+						
+						<div class="collapse" id="collapseExample">
+						  <div class="well">
+							 <div class="templateAddress" ng-cloak>Size: {{item.Quantity}} {{item.Volume}}</div>
+							 <div class="templateAddress" ng-cloak>Last Updated: </div>
+						  </div>
+						</div>
+                    </div>
+                    <div class="templateBorder"></div>
+                </div>
+            </div>
+			 <div ng-cloak>  {{ error }}</div>
+        </section>
+    </section>
+
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    <script src="cordova.js"></script>
+    <script src="cordova-plugin.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+
+    <!-- CordovaToDoApp_AngularJS references -->
+
+    <script src="scripts/frameworks/angular-resource.min.js"></script>
+
+    <script src="scripts/ang/app.js"></script>
+    <script src="scripts/ang/configuraion.js"></script>
+    <script src="scripts/ang/services.js"></script>
+    <script src="scripts/ang/controllers.js"></script>
+    <script src="scripts/ang/directives.js"></script>
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
